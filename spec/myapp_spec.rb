@@ -1,6 +1,6 @@
 # require 'rspec'
 require_relative '../myapp'
-require 'rack/test'
+# require 'rack/test'
 
 set :environment, :test
 
@@ -9,9 +9,9 @@ def app
 end
 
 describe 'myapp service' do
-  include Rack::Test::Methods
+  # include Rack::Test::Methods
 
-  it 'should load home page' do
+  it 'loads home page' do
     get '/'
     expect(last_response).to be_ok
   end
