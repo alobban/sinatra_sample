@@ -1,1 +1,4 @@
 .idea/
+
+#ignore bower_components folder
+bower_components/
