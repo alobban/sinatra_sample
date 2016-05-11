@@ -1,0 +1,23 @@
+{
+  "name": "sinatra_sample",
+  "homepage": "https://github.com/alobban/sinatra_sample",
+  "authors": [
+    "Andrew Lobban <andrewglobban@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
