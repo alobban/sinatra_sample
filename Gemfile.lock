@@ -7,6 +7,7 @@ GEM
     autotest-growl (0.2.16)
     coderay (1.1.1)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
     ffi (1.9.10)
     method_source (0.8.2)
     pry (0.10.3)
@@ -52,6 +53,7 @@ DEPENDENCIES
   ZenTest (~> 4.11.0)
   autotest-fsevent (~> 0.2.11)
   autotest-growl (~> 0.2.16)
+  dotenv (~> 2.1.1)
   pry
   rack (~> 1.6.4)
   rack-test (~> 0.6.3)
