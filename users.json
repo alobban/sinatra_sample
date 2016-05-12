@@ -1,0 +1,71 @@
+[
+  {
+    "data": [{
+      "type": "user",
+      "id": 1,
+      "attributes": {
+        "first_name": "John",
+        "last_name": "Smith",
+        "gender": "M",
+        "city": "Chicago",
+        "state": "IL"
+      }
+    },
+      {
+        "type": "user",
+        "id": 2,
+        "attributes": {
+          "first_name": "Jane",
+          "last_name": "Smith",
+          "gender": "F",
+          "city": "New York City",
+          "state": "NY"
+        }
+      },
+      {
+        "type": "user",
+        "id": 3,
+        "attributes": {
+          "first_name": "Jay",
+          "last_name": "Stein",
+          "gender": "M",
+          "city": "Chicago",
+          "state": "IL"
+        }
+      },
+      {
+        "type": "user",
+        "id": 4,
+        "attributes": {
+          "first_name": "Andrew",
+          "last_name": "Lobban",
+          "gender": "M",
+          "city": "Chicago",
+          "state": "IL"
+        }
+      },
+      {
+        "type": "user",
+        "id": 5,
+        "attributes": {
+          "first_name": "Nina",
+          "last_name": "Jones",
+          "gender": "F",
+          "city": "Chicago",
+          "state": "IL"
+        }
+      },
+      {
+        "type": "user",
+        "id": 6,
+        "attributes": {
+          "first_name": "Jared",
+          "last_name": "Schreibman",
+          "gender": "M",
+          "city": "Chicago",
+          "state": "IL"
+        }
+      }
+    ]
+  }
+]

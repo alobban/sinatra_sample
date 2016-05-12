@@ -33,6 +33,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    ruby-odbc (0.99997)
     shotgun (0.9.1)
       rack (>= 1.0)
     sinatra (1.4.7)
@@ -56,5 +57,6 @@ DEPENDENCIES
   rack-test (~> 0.6.3)
   rspec
   rspec-autotest (~> 1.0.0)
+  ruby-odbc (~> 0.99997)
   shotgun (~> 0.9.1)
   sinatra (~> 1.4.7)
