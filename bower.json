@@ -15,9 +15,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "angularjs#^1.5.5"
+    "angular": "angularjs#^1.5.5",
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1"
-  }
+  "devDependencies": {}
 }

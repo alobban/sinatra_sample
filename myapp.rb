@@ -1,7 +1,17 @@
 require 'sinatra'
+require 'json'
 
+# rendering json for everything (except /)
+before do
+  content_type 'application/json'
+end
+
+# send the frontend
+# This is the only actual html served.
+# Everything else is json
 get '/' do
-  "This is the Users Index page"
+  content_type 'html'
+  send_file 'public/index.html'
 end
 
 get '/new' do
