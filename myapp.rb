@@ -1,5 +1,10 @@
 require 'sinatra'
 require 'json'
+require 'odbc_utf8'
+
+source = "POWERBROKER_FORCEDEV"
+
+client = ODBC.connect(source, "afnappsdbuser", "Afn@2014")
 
 # rendering json for everything (except /)
 before do
@@ -11,8 +16,14 @@ end
 # Everything else is json
 
 get '/user' do
-  "Some users"
-  send_file 'users.json'
+  sql = "SELECT * FROM afnapp.dev_user_test"
+  statement = client.prepare(sql)
+  statement.execute
+  rows = []
+  while r = statement.fetch
+    rows.push(r)
+  end
+  rows.to_json
 end
 
 put '/user' do
