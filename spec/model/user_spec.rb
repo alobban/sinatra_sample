@@ -1,0 +1,9 @@
+require 'rspec'
+
+describe User do
+
+  it 'should do something' do
+
+    true.should == false
+  end
+end
