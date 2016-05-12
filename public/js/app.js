@@ -2,13 +2,12 @@ angular
     .module('app', [
         'ui.router'
     ])
-    .config(['$urlRouteProvider','$stateProvider', function($urlRouteProvider, $stateProvider) {
-        $urlRouteProvider.otherwise('/');
+    .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('home', {
-                url: '/',
-                templateUrl: 'index.html'
+                url: '/'
             })
             .state('users', {
                 url: '/user',
