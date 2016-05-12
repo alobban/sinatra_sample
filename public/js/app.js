@@ -1,5 +1,17 @@
 angular
-    .module('app', [])
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.otherwise({redirectTo: '/'})
+    .module('app', [
+        'ui.router'
+    ])
+    .config(['$urlRouteProvider','$stateProvider', function($urlRouteProvider, $stateProvider) {
+        $urlRouteProvider.otherwise('/');
+
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'index.html'
+            })
+            .state('users', {
+                url: '/user',
+                templateUrl: 'templates/users.html'
+            });
     }]);
