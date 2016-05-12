@@ -9,6 +9,24 @@ end
 # send the frontend
 # This is the only actual html served.
 # Everything else is json
+
+get '/user' do
+  "Some users"
+  send_file 'users.json'
+end
+
+put '/user' do
+  "Some users"
+end
+
+post '/user' do
+  "Some users"
+end
+
+delete '/user/:id' do
+  "Deleting User: #{:id}"
+end
+
 get '/' do
   content_type 'html'
   send_file 'public/index.html'
