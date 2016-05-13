@@ -10,6 +10,7 @@ gem 'autotest-fsevent', '~> 0.2.11'
 gem 'rspec-autotest', '~> 1.0.0'
 gem 'ruby-odbc', '~> 0.99997'
 gem 'dotenv', '~> 2.1.1'
+gem 'rest-client'
 group :development, :test do
   gem 'pry'
   gem 'rspec'
