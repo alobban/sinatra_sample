@@ -3,3 +3,6 @@
 #ignore bower_components folder
 bower_components/
 node_modules/
+
+# ignore ENV file
+.env

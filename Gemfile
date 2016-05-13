@@ -9,7 +9,7 @@ gem 'autotest-growl', '~> 0.2.16'
 gem 'autotest-fsevent', '~> 0.2.11'
 gem 'rspec-autotest', '~> 1.0.0'
 gem 'ruby-odbc', '~> 0.99997'
-
+gem 'dotenv', '~> 2.1.1'
 group :development, :test do
   gem 'pry'
   gem 'rspec'

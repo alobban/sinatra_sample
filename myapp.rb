@@ -1,10 +1,14 @@
 require 'sinatra'
 require 'json'
 require 'odbc_utf8'
+require 'dotenv'
+Dotenv.load!
 
-source = "POWERBROKER_FORCEDEV"
+data_source = ENV['PB_DB_ODBC_SOURCE']
+user        = ENV['PB_DB_USER']
+password    = ENV['PB_DB_USER_PWD']
 
-client = ODBC.connect(source, "afnappsdbuser", "Afn@2014")
+client = ODBC.connect(data_source, user, password)
 
 # rendering json for everything (except /)
 before do
