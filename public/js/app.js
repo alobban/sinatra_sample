@@ -1,6 +1,10 @@
+(function() {
+    'use strict';
+
 angular
     .module('app', [
-        'ui.router'
+        'ui.router',
+        'afn-user'
     ])
     .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
@@ -18,3 +22,4 @@ angular
                 templateUrl: 'templates/addUser.html'
             });
     }]);
+})();
