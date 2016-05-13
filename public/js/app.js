@@ -12,5 +12,9 @@ angular
             .state('users', {
                 url: '/user',
                 templateUrl: 'templates/users.html'
+            })
+            .state('addUser', {
+                url: '/new',
+                templateUrl: 'templates/addUser.html'
             });
     }]);
