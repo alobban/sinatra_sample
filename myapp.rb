@@ -15,7 +15,7 @@ client = ODBC.connect(data_source, user, password)
 before do
   content_type 'application/json'
   request.body.rewind
-  request_payload = JSON.parse(request.body.read,:symbolize_names => true) rescue {}
+  @request_payload = JSON.parse(request.body.read,:symbolize_names => true) rescue {}
 end
 
 # send the frontend
@@ -53,8 +53,20 @@ get '/user/:id' do
   user.to_json
 end
 
-put '/user' do
-  "Some users"
+put '/user/:id' do
+  sql = 'UPDATE [afnapp].[dev_user_test]
+      SET [first_name] = ISNULL(?,first_name)
+      ,[last_name] = ISNULL(?,last_name)
+      ,[gender] = ISNULL(?,gender)
+      ,[city] = ISNULL(?,city)
+      ,[state] = ISNULL(?,state)
+      ,[updated_at] = GETDATE()
+      WHERE id = ?'
+  statement = client.prepare(sql)
+  statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state], params[:id])
+  statement.drop
+  status 202
+  body "Content successfully updated"
 end
 
 post '/user' do
@@ -69,14 +81,20 @@ post '/user' do
           VALUES
            (?,?,?,?,?,GETDATE(),GETDATE())'
   statement = client.prepare(sql)
-  statement.execute(request_payload[:first_name],request_payload[:last_name],request_payload[:gender],request_payload[:city], request_payload[:state])
+  statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state])
   statement.drop
   status 201
   body "Content successfully created"
 end
 
 delete '/user/:id' do
-  "Deleting User: #{params[:id]}"
+  sql = 'DELETE FROM [afnapp].[dev_user_test]
+        WHERE id = ?'
+  statement = client.prepare(sql)
+  statement.execute(params[:id])
+  statement.drop
+  status 202
+  body "Content successfully deleted"
 end
 
 get '/' do
