@@ -1,9 +1,6 @@
-require 'rspec'
+require_relative '../../model/user'
 
 describe User do
 
-  it 'should do something' do
 
-    true.should == false
-  end
 end
