@@ -1,29 +1,5 @@
 <form novalidate>
-    <div class="form-group">
-        <label>First Name:</label>
-        <input type="text" ng-model="user.first_name" class="form-control" required/><br/>
-    </div>
-    <div class="form-group">
-        <label>Last Name:</label>
-        <input type="text" ng-model="user.last_name" class="form-control" required/><br/>
-    </div>
-    <label>Gender:</label>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="user.gender" value="M"/>male
-        </label>
-        <label>
-            <input type="radio" ng-model="user.gender" value="F"/>female
-        </label>
-    </div>
-    <div class="form-group">
-        <label>City: </label>
-        <input type="text" ng-model="user.city" class="form-control" required/>
-    </div>
-    <div class="form-group">
-        <label>State: </label>
-        <input type="text" ng-model="user.state" class="form-control" required/><br/>
-    </div>
+    <div  ng-include="'templates/form.html'"></div>
     <button type="button" ng-click="reset()" class="btn btn-default">Reset</button>
-    <button type="submit" ng-click="update(user)" class="btn btn-primary">Save</button>
+    <button type="submit" ng-click="create(user)" class="btn btn-primary">Save</button>
 </form>
