@@ -9,9 +9,15 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename');
 
-gulp.task('scripts', function () {
+gulp.task('depend', function () {
     return gulp.src(['bower_components/angular/angular.min.js','bower_components/angular-ui-router/release/angular-ui-router.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js'])
         .pipe(concat('dependencies.js'))
+        .pipe(gulp.dest('public/js'));
+});
+
+gulp.task('scripts', function (){
+    return gulp.src(['public/js/app.js','public/js/user/user.js','public/js/user/user.controller.js'])
+        .pipe(concat('app.compiled.js'))
         .pipe(gulp.dest('public/js'));
 });
 
@@ -26,4 +32,4 @@ gulp.task('copy-css', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('default', ['scripts', 'sass-css', 'copy-css']);
+gulp.task('default', ['depend','scripts', 'sass-css', 'copy-css']);
