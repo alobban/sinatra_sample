@@ -15,8 +15,14 @@ gulp.task('depend', function () {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('scripts', function (){
-    return gulp.src(['public/js/app.js','public/js/user/user.js','public/js/user/user.controller.js'])
+gulp.task('jshint-test', function () {
+   return gulp.src(['public/js/app.js','public/js/modules/**/*.js'])
+       .pipe(jshint())
+       .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('scripts', function () {
+    return gulp.src(['public/js/app.js','public/js/modules/**/*.js'])
         .pipe(concat('app.compiled.js'))
         .pipe(gulp.dest('public/js'));
 });
@@ -32,4 +38,9 @@ gulp.task('copy-css', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('default', ['depend','scripts', 'sass-css', 'copy-css']);
+gulp.task('watch', function () {
+   gulp.watch(['public/js/app.js','public/js/modules/**/*.js'], ['jshint-test']);
+   gulp.watch('public/scss/*', ['sass-css']); 
+});
+
+gulp.task('default', ['depend','jshint-test','scripts', 'sass-css', 'copy-css', 'watch']);
