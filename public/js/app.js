@@ -20,6 +20,7 @@ angular
             .state('addUser', {
                 url: '/new',
                 templateUrl: 'templates/addUser.html'
-            });
+            })
+        ;
     }]);
 })();
