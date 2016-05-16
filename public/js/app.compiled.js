@@ -27,6 +27,15 @@ angular
 /**
  * Created by vagrant on 5/13/16.
  */
+(function(){
+'use strict';
+    
+    angular
+        .module('afn-user', []);
+})();
+/**
+ * Created by vagrant on 5/13/16.
+ */
 
 (function() {
     'use strict';
@@ -49,13 +58,4 @@ angular
             console.log($scope.users);
         });
     }
-})();
-/**
- * Created by vagrant on 5/13/16.
- */
-(function(){
-'use strict';
-    
-    angular
-        .module('afn-user', []);
 })();

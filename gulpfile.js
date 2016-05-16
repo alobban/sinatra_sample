@@ -22,7 +22,11 @@ gulp.task('jshint-test', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src(['public/js/app.js','public/js/modules/**/*.js'])
+    return gulp.src([
+        'public/js/app.js',
+        'public/js/modules/user/user.js',
+        'public/js/modules/user/user.controller.js'
+    ])
         .pipe(concat('app.compiled.js'))
         .pipe(gulp.dest('public/js'));
 });
@@ -40,6 +44,7 @@ gulp.task('copy-css', function () {
 
 gulp.task('watch', function () {
    gulp.watch(['public/js/app.js','public/js/modules/**/*.js'], ['jshint-test']);
+   gulp.watch(['public/js/app.js','public/js/modules/**/*.js'], ['scripts']);
    gulp.watch('public/scss/*', ['sass-css']); 
 });
 
