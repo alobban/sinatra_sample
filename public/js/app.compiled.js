@@ -131,14 +131,26 @@ angular
             // userJson = userMapped;
             console.log(userJson);
             
-            $http.put(apiUrl+user.id, userJson)
-                .success(function(response) {
-                    console.log(response);
-                    $state.go('users');
-                }).error(function(response) {
-                    console.log(response);
-                })
-            ;
+            // $http.put(apiUrl+user.id, userJson)
+            //     .success(function(response) {
+            //         console.log(response);
+            //         $state.go('users');
+            //     }).error(function(response) {
+            //         console.log(response);
+            //     })
+            // ;
+            
+            $http({
+                method: 'PUT',
+                url: apiUrl+user.id,
+                data: userJson
+            }).success(function (response) {
+                console.log(response);
+                $state.go('users');
+            }).error(function (response) {
+                console.log("It did not work!");
+                console.log(response);
+            });
         }        
     }
 })();
