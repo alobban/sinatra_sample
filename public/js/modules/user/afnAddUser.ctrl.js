@@ -16,7 +16,7 @@
         var apiUrl = domain+'/user';
 
         $http({
-            mehtod: 'GET',
+            mehtod: 'POST',
             url: apiUrl
         }).success(function(data) {
             $scope.users = data;
