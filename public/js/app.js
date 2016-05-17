@@ -21,6 +21,10 @@ angular
                 url: '/new',
                 templateUrl: 'templates/addUser.html'
             })
+            .state('editUser', {
+                url: '/user/{id:int}',
+                templateUrl: 'templates/editUser.html'
+            })
         ;
     }]);
 })();
