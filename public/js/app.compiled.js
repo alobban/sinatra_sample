@@ -49,12 +49,13 @@ angular
         .controller('AfnUserController', AfnUserController)
     ;
 
-    function AfnUserController($scope, $http, $state, $rootScope) {
+    function AfnUserController($scope, $http, $state, $rootScope, $window) {
         // var vm = this;
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';
         $scope.edit = edit;
         $scope.create = create;
+        $scope.delete = deleteUser;
 
         function edit(user) {
             console.log(user);
@@ -64,6 +65,19 @@ angular
 
         function create() {
             $state.go('addUser');
+        }
+
+        function deleteUser(user) {
+            $http.delete(apiUrl+'/'+user.id)
+                .success(function(data) {
+                    console.log(data);
+                    $window.location.reload(true);
+                })
+                .error(function(data) {
+                    console.log(data);
+                    console.log('Error: Delete did not work!');
+                })
+            ;
         }
 
         $http({
