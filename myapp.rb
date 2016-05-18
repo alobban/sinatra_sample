@@ -78,14 +78,18 @@ post '/user' do
            ,city
            ,state
            ,created_at
-           ,updated_at)
+           ,updated_at) Output Inserted.id
           VALUES
            (?,?,?,?,?,GETDATE(),GETDATE())'
   statement = client.prepare(sql)
   statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state])
+  new_id = nil
+  while r = statement.fetch
+    new_id = r[0]
+  end
   statement.drop
   status 201
-  serialized = {:response => "Content successfully created"}.to_json
+  serialized = {:response => "Content successfully created", :id => "#{new_id}"}.to_json
   body serialized
 end
 
