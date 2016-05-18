@@ -54,47 +54,50 @@ get '/user/:id' do
 end
 
 put '/user/:id' do
-  sql = 'UPDATE [afnapp].[dev_user_test]
-      SET [first_name] = ISNULL(?,first_name)
-      ,[last_name] = ISNULL(?,last_name)
-      ,[gender] = ISNULL(?,gender)
-      ,[city] = ISNULL(?,city)
-      ,[state] = ISNULL(?,state)
-      ,[updated_at] = GETDATE()
+  sql = 'UPDATE afnapp.dev_user_test
+      SET first_name = ISNULL(?,first_name)
+      ,last_name = ISNULL(?,last_name)
+      ,gender = ISNULL(?,gender)
+      ,city = ISNULL(?,city)
+      ,state = ISNULL(?,state)
+      ,updated_at = GETDATE()
       WHERE id = ?'
   statement = client.prepare(sql)
   statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state], params[:id])
   statement.drop
   status 202
-  body "Content successfully updated"
+  serialized = {:response => "Content successfully updated"}.to_json
+  body serialized
 end
 
 post '/user' do
-  sql = 'INSERT INTO [afnapp].[dev_user_test]
-           ([first_name]
-           ,[last_name]
-           ,[gender]
-           ,[city]
-           ,[state]
-           ,[created_at]
-           ,[updated_at])
+  sql = 'INSERT INTO afnapp.dev_user_test
+           (first_name
+           ,last_name
+           ,gender
+           ,city
+           ,state
+           ,created_at
+           ,updated_at)
           VALUES
            (?,?,?,?,?,GETDATE(),GETDATE())'
   statement = client.prepare(sql)
   statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state])
   statement.drop
   status 201
-  body "Content successfully created"
+  serialized = {:response => "Content successfully created"}.to_json
+  body serialized
 end
 
 delete '/user/:id' do
-  sql = 'DELETE FROM [afnapp].[dev_user_test]
+  sql = 'DELETE FROM afnapp.dev_user_test
         WHERE id = ?'
   statement = client.prepare(sql)
   statement.execute(params[:id])
   statement.drop
   status 202
-  body "Content successfully deleted"
+  serialized = {:response => "Content successfully deleted"}.to_json
+  body serialized
 end
 
 get '/' do
