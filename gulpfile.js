@@ -44,10 +44,15 @@ gulp.task('copy-css', function () {
         .pipe(gulp.dest('public/css'));
 });
 
+gulp.task('copy-fonts', function () {
+    return gulp.src('bower_components/bootstrap/fonts/*')
+        .pipe(gulp.dest('public/fonts'));
+});
+
 gulp.task('watch', function () {
    gulp.watch(['public/js/app.js','public/js/modules/**/*.js'], ['jshint-test']);
    gulp.watch(['public/js/app.js','public/js/modules/**/*.js'], ['scripts']);
    gulp.watch('public/scss/*', ['sass-css']); 
 });
 
-gulp.task('default', ['depend','jshint-test','scripts', 'sass-css', 'copy-css', 'watch']);
+gulp.task('default', ['depend','jshint-test','scripts', 'sass-css', 'copy-css', 'copy-fonts', 'watch']);
