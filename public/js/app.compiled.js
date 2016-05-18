@@ -114,6 +114,7 @@ angular
         $scope.returnToUsers = returnToUsers;
         $scope.editUser = editUser;
         $scope.deleteUser = deleteUser;
+        $rootScope.returnToUsers = cancelBtn;
 
         console.log($rootScope.user);
         
@@ -131,7 +132,9 @@ angular
             $state.go('deleteUser', {id: user.id});
         }
 
-        // console.log(user);
+        function cancelBtn() {
+            $state.go('users');
+        }
 
         $http.get(apiUrl+$rootScope.user.id)
             .success(function(data) {
