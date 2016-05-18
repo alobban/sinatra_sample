@@ -1,6 +1,6 @@
 <div ng-controller="AfnUserController">
     <h3>Here are all the users: </h3>
-    <button id="btnNewUser" type="submit" ng-click="new()" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+
     <table class="table table-hover">
         <thead>
             <tr>
@@ -9,6 +9,9 @@
                 <th>Gender</th>
                 <th>City</th>
                 <th>State</th>
+                <th></th>
+                <th></th>
+                <th><button id="btnNewUser" type="submit" ng-click="new()" class="btn btn-xs" title="Add New User"><span class="glyphicon glyphicon-plus"></span></button></th>
             </tr>
         </thead>
         <tbody ng-repeat="user in users">
