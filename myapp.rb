@@ -30,8 +30,8 @@ get '/user' do
   i = 0
   while r = statement.fetch
     i+=1
-    # user = {:id => r[0], :first_name => r[1], :last_name => r[2], :gender => r[3], :city => r[4], :state => r[5], :created_at => r[6], :updated_at => r[7]}
-    user = User.new(r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7])
+     user = {:id => r[0], :first_name => r[1], :last_name => r[2], :gender => r[3], :city => r[4], :state => r[5], :created_at => r[6], :updated_at => r[7]}
+    #user = User.new(r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7])
     users[i] = user
   end
   statement.drop
