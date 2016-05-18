@@ -30,8 +30,8 @@ get '/user' do
   i = 0
   while r = statement.fetch
     i+=1
-    # user = {:id => r[0], :first_name => r[1], :last_name => r[2], :gender => r[3], :city => r[4], :state => r[5], :created_at => r[6], :updated_at => r[7]}
-    user = User.new(r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7])
+     user = {:id => r[0], :first_name => r[1], :last_name => r[2], :gender => r[3], :city => r[4], :state => r[5], :created_at => r[6], :updated_at => r[7]}
+    #user = User.new(r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7])
     users[i] = user
   end
   statement.drop
@@ -54,47 +54,54 @@ get '/user/:id' do
 end
 
 put '/user/:id' do
-  sql = 'UPDATE [afnapp].[dev_user_test]
-      SET [first_name] = ISNULL(?,first_name)
-      ,[last_name] = ISNULL(?,last_name)
-      ,[gender] = ISNULL(?,gender)
-      ,[city] = ISNULL(?,city)
-      ,[state] = ISNULL(?,state)
-      ,[updated_at] = GETDATE()
+  sql = 'UPDATE afnapp.dev_user_test
+      SET first_name = ISNULL(?,first_name)
+      ,last_name = ISNULL(?,last_name)
+      ,gender = ISNULL(?,gender)
+      ,city = ISNULL(?,city)
+      ,state = ISNULL(?,state)
+      ,updated_at = GETDATE()
       WHERE id = ?'
   statement = client.prepare(sql)
   statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state], params[:id])
   statement.drop
   status 202
-  body "Content successfully updated"
+  serialized = {:response => "Content successfully updated"}.to_json
+  body serialized
 end
 
 post '/user' do
-  sql = 'INSERT INTO [afnapp].[dev_user_test]
-           ([first_name]
-           ,[last_name]
-           ,[gender]
-           ,[city]
-           ,[state]
-           ,[created_at]
-           ,[updated_at])
+  sql = 'INSERT INTO afnapp.dev_user_test
+           (first_name
+           ,last_name
+           ,gender
+           ,city
+           ,state
+           ,created_at
+           ,updated_at) Output Inserted.id
           VALUES
            (?,?,?,?,?,GETDATE(),GETDATE())'
   statement = client.prepare(sql)
   statement.execute(@request_payload[:first_name],@request_payload[:last_name],@request_payload[:gender],@request_payload[:city], @request_payload[:state])
+  new_id = nil
+  while r = statement.fetch
+    new_id = r[0]
+  end
   statement.drop
   status 201
-  body "Content successfully created"
+  serialized = {:response => "Content successfully created", :id => "#{new_id}"}.to_json
+  body serialized
 end
 
 delete '/user/:id' do
-  sql = 'DELETE FROM [afnapp].[dev_user_test]
+  sql = 'DELETE FROM afnapp.dev_user_test
         WHERE id = ?'
   statement = client.prepare(sql)
   statement.execute(params[:id])
   statement.drop
   status 202
-  body "Content successfully deleted"
+  serialized = {:response => "Content successfully deleted"}.to_json
+  body serialized
 end
 
 get '/' do

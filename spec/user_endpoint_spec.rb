@@ -27,7 +27,7 @@ describe 'User endpoint behaviour' do
 
   xit 'call POST without payload' do
     post '/user'
-    expect(last_response).to be_
+    expect(last_response).to be_ok
   end
 
   xit 'call DELETE with id' do
