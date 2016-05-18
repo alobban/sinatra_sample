@@ -10,17 +10,40 @@
         .controller('AfnAddUserCtrl', AfnAddUserCtrl)
     ;
 
-    function AfnAddUserCtrl($scope, $http) {
-        // var vm = this;
+    function AfnAddUserCtrl($rootScope, $http, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';
+        var userJson = null;
+        $rootScope.user = {};
+        $rootScope.createUser = createUser;
 
-        $http({
-            mehtod: 'POST',
-            url: apiUrl
-        }).success(function(data) {
-            $scope.users = data;
-            console.log($scope.users);
-        });
+        // console.log(JSON.stringify($rootScope.user));
+        function mapFields(user) {
+            return {
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "gender": user.gender,
+                "city": user.city,
+                "state": user.state
+            };
+        }
+        
+        function createUser(user) {
+            var userMapped = mapFields(user);
+            userJson = JSON.stringify(userMapped);
+            // userJson = userMapped;
+            console.log(userJson);
+
+            $http.post(apiUrl, userJson)
+                .success(function(data) {
+                    console.log('It works!');
+                    console.log(data);
+                    $state.go('users');
+                }).error(function(data) {
+                    console.log("Error: It's not working!");
+                    console.log(error);
+                })
+            ;
+        }
     }
 })();
