@@ -17,6 +17,7 @@
         $scope.edit = edit;
         $scope.create = create;
         $scope.delete = deleteUser;
+        $scope.show = showUser;
 
         function edit(user) {
             console.log(user);
@@ -39,6 +40,11 @@
                     console.log('Error: Delete did not work!');
                 })
             ;
+        }
+        
+        function showUser(user) {
+            $rootScope.user = user;
+            $state.go('viewUser', {id: user.id});
         }
 
         $http({

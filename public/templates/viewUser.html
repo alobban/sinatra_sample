@@ -1,0 +1,21 @@
+<div id="userView">
+    <h3>Info View for User: {{user.first_name}}</h3>
+    <div>
+        <label>First Name: </label> {{user.first_name}}
+    </div>
+    <div>
+        <label>Last Name: </label> {{user.last_name}}
+    </div>
+    <div>
+        <label>Gender: </label> {{user.gender}}
+    </div>
+    <div>
+        <label>City: </label> {{user.city}}
+    </div>
+    <div>
+        <label>State: </label> {{user.state}}
+    </div>
+    <button type="button" ng-click="returnToUsers()" class="btn btn-default">Return</button>
+    <button type="submit" ng-click="editUser(user)" class="btn btn-success">Edit</button>
+    <button type="submit" ng-click="deleteUser(user)" class="btn btn-success">Delete</button>
+</div>
