@@ -111,12 +111,15 @@ angular
         .controller('AfnViewUserCtrl', AfnViewUserCtrl)
     ;
 
-    function AfnViewUserCtrl($rootScope, $http, $scope) {
+    function AfnViewUserCtrl($rootScope, $http, $scope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain + '/user/';
+        $scope.user = $rootScope.user;
         $scope.returnToUsers = returnToUsers;
         $scope.editUser = editUser;
         $scope.deleteUser = deleteUser;
+
+        console.log($rootScope.user);
         
         function returnToUsers() {
             $state.go('users');
@@ -132,7 +135,9 @@ angular
             $state.go('editUser', {id: user.id});
         }
 
-        $http.get(apiUrl+user.id)
+        // console.log(user);
+
+        $http.get(apiUrl+$rootScope.user.id)
             .success(function(data) {
                 console.log(data);
                 console.log('View User works!');
