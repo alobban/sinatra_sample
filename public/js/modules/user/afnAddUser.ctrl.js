@@ -16,6 +16,7 @@
         var userJson = null;
         $rootScope.user = {};
         $rootScope.createUser = createUser;
+        $rootScope.reset = reset;
 
         // console.log(JSON.stringify($rootScope.user));
         function mapFields(user) {
@@ -44,6 +45,10 @@
                     console.log(error);
                 })
             ;
+        }
+        
+        function reset() {
+            $rootScope.user = {};
         }
     }
 })();
