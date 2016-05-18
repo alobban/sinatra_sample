@@ -26,20 +26,22 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
                             <li><a ui-sref="users">Users </a></li>
+                            <li><a ui-sref="addUser">Add User </a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
         <article id="main">
-            <h2>It begins!</h2>
+            <h1>Sample Project</h1>
+            <p>The line below demonstrates the processing of an angular expression: </p>
             <p>The value of <span ng-non-bindable>{{ 3 + 7 }}</span> is {{ 3 + 7 }}</p>
             <div class="main" ui-view></div>
         </article>
     </div>
 
 <script src="js/dependencies.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.compiled.js"></script>
 <script>
     $('.nav a').on('click', function(){
 //        $('.btn-navbar').click(); //bootstrap 2.x

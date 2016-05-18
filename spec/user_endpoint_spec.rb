@@ -20,17 +20,17 @@ describe 'User endpoint behaviour' do
     expect(last_response).to be_ok
   end
 
-  it 'call PUT' do
+  xit 'call PUT' do
     put '/user'
     expect(last_response).to be_ok
   end
 
-  it 'call POST without payload' do
+  xit 'call POST without payload' do
     post '/user'
     expect(last_response).to be_ok
   end
 
-  it 'call DELETE with id' do
+  xit 'call DELETE with id' do
     delete '/user/1'
     expect(last_response).to be_ok
   end

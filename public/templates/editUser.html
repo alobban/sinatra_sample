@@ -1,0 +1,6 @@
+<h3>Edit User: {{user.first_name}}</h3>
+<form novalidate ng-controller="AfnEditUserCtrl">
+    <div  ng-include="'templates/form.html'"></div>
+    <button type="button" ng-click="reset()" class="btn btn-default">Reset</button>
+    <button type="submit" ng-click="updateUser(user)" class="btn btn-primary">Update</button>
+</form>
