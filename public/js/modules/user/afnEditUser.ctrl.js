@@ -7,6 +7,9 @@
 
     angular
         .module('afn-user')
+        // .config([$httpProvider], function($httpProvider) {
+        //     $httpProvider.defaults.headers.put = 'Content-Type: text/plain';
+        // })
         .controller('AfnEditUserCtrl', AfnEditUserCtrl)
     ;
 
@@ -33,26 +36,15 @@
             // userJson = userMapped;
             console.log(userJson);
             
-            // $http.put(apiUrl+user.id, userJson)
-            //     .success(function(response) {
-            //         console.log(response);
-            //         $state.go('users');
-            //     }).error(function(response) {
-            //         console.log(response);
-            //     })
-            // ;
-            
-            $http({
-                method: 'PUT',
-                url: apiUrl+user.id,
-                data: userJson
-            }).success(function (response) {
-                console.log(response);
-                $state.go('users');
-            }).error(function (response) {
-                console.log("It did not work!");
-                console.log(response);
-            });
+            $http.put(apiUrl+user.id, userJson)
+                .success(function(response) {
+                    console.log(response);
+                    $state.go('users');
+                }).error(function(error) {
+                    console.log("Error: It's not working");
+                    console.log(error);
+                })
+            ;
         }        
     }
 })();
