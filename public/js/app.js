@@ -25,6 +25,10 @@ angular
                 url: '/user/{id:int}',
                 templateUrl: 'templates/editUser.html'
             })
+            .state('viewUser', {
+                url:'/view',
+                templateUrl: 'templates/viewUser.html'
+            })
         ;
     }]);
 })();
