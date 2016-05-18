@@ -149,6 +149,7 @@ angular
         var apiUrl = domain+'/user/';
         var userJson = null;
         $rootScope.updateUser = updateUser;
+        $rootScope.cancel = cancelBtn;
         
         // console.log(JSON.stringify($rootScope.user));
         function mapFields(user) {
@@ -176,6 +177,10 @@ angular
                     console.log(error);
                 })
             ;
-        }        
+        }
+
+        function cancelBtn() {
+            $state.go('users');
+        }
     }
 })();
