@@ -31,7 +31,7 @@
         
         function deleteUser(user) {
             $rootScope.user = user;
-            $state.go('editUser', {id: user.id});
+            $state.go('deleteUser', {id: user.id});
         }
 
         // console.log(user);

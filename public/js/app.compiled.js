@@ -29,6 +29,10 @@ angular
                 url:'/view',
                 templateUrl: 'templates/viewUser.html'
             })
+            .state('deleteUser', {
+                url: '/delete',
+                templateUrl: 'templates/deleteUser.html'
+            })
         ;
     }]);
 })();
@@ -73,16 +77,8 @@ angular
         }
 
         function deleteUser(user) {
-            $http.delete(apiUrl+'/'+user.id)
-                .success(function(data) {
-                    console.log(data);
-                    $window.location.reload(true);
-                })
-                .error(function(data) {
-                    console.log(data);
-                    console.log('Error: Delete did not work!');
-                })
-            ;
+            $rootScope.user = user;
+            $state.go('deleteUser', {id: user.id});
         }
         
         function showUser(user) {
@@ -132,7 +128,7 @@ angular
         
         function deleteUser(user) {
             $rootScope.user = user;
-            $state.go('editUser', {id: user.id});
+            $state.go('deleteUser', {id: user.id});
         }
 
         // console.log(user);
@@ -249,6 +245,43 @@ angular
                 }).error(function(error) {
                     console.log("Error: It's not working");
                     console.log(error);
+                })
+            ;
+        }
+
+        function cancelBtn() {
+            $state.go('users');
+        }
+    }
+})();
+/**
+ * Created by vagrant on 5/13/16.
+ */
+
+(function() {
+    'use strict';
+
+    angular
+        .module('afn-user')
+        .controller('AfnDeleteUserCtrl', AfnDeleteUserCtrl)
+    ;
+
+    function AfnDeleteUserCtrl($http, $rootScope, $state) {
+        var domain = 'http://localhost:9393';
+        var apiUrl = domain+'/user/';
+        var userJson = null;
+        $rootScope.deleteUser = deleteUser;
+        $rootScope.returnToUsers = cancelBtn;
+
+        function deleteUser(user) {
+            $http.delete(apiUrl+user.id)
+                .success(function(data) {
+                    console.log(data);
+                    $state.go('user');
+                })
+                .error(function(data) {
+                    console.log(data);
+                    console.log('Error: Delete did not work!');
                 })
             ;
         }

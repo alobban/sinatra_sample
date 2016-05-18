@@ -1,0 +1,6 @@
+<div id="userView" ng-controller="AfnDeleteUserCtrl">
+    <h3>Delete User: {{user.first_name}}</h3>
+    <div ng-include="'templates/view.html'"></div>
+    <button type="button" ng-click="returnToUsers()" class="btn btn-success">Cancel</button>
+    <button type="submit" ng-click="deleteUser(user)" class="btn btn-danger">Continue With Delete</button>
+</div>

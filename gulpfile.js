@@ -28,7 +28,8 @@ gulp.task('scripts', function () {
         'public/js/modules/user/user.controller.js',
         'public/js/modules/user/afnViewUser.ctrl.js',
         'public/js/modules/user/afnAddUser.ctrl.js',
-        'public/js/modules/user/afnEditUser.ctrl.js'
+        'public/js/modules/user/afnEditUser.ctrl.js',
+        'public/js/modules/user/afnDeleteUser.ctrl.js'
     ])
         .pipe(concat('app.compiled.js'))
         .pipe(gulp.dest('public/js'));

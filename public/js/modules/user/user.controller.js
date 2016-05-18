@@ -30,16 +30,8 @@
         }
 
         function deleteUser(user) {
-            $http.delete(apiUrl+'/'+user.id)
-                .success(function(data) {
-                    console.log(data);
-                    $window.location.reload(true);
-                })
-                .error(function(data) {
-                    console.log(data);
-                    console.log('Error: Delete did not work!');
-                })
-            ;
+            $rootScope.user = user;
+            $state.go('deleteUser', {id: user.id});
         }
         
         function showUser(user) {

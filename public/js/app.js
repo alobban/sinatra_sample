@@ -29,6 +29,10 @@ angular
                 url:'/view',
                 templateUrl: 'templates/viewUser.html'
             })
+            .state('deleteUser', {
+                url: '/delete',
+                templateUrl: 'templates/deleteUser.html'
+            })
         ;
     }]);
 })();
