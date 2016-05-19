@@ -23,7 +23,7 @@ gulp.task('jshint-test', function () {
     
    return gulp.src(['public/js/app.js','public/js/modules/**/*.js'])
        .pipe($.jshint())
-       .pipe($.jshint.reporter('jshint-stylish'));
+       .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
 });
 
 gulp.task('scripts', function () {
@@ -72,3 +72,18 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['depend','jshint-test','scripts', 'sass-css', 'copy-css', 'copy-fonts', 'watch']);
+
+
+////////////
+
+function log(msg) {
+    if (typeof(msg) === 'object') {
+        for (var item in msg) {
+            if (msg.hasOwnProperty(item)) {
+                $.util.log($.util.colors.blue(msg[item]));
+            }
+        }
+    } else {
+        $.util.log($.util.colors.blue(msg));
+    }
+}
