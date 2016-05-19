@@ -3,22 +3,23 @@
  */
 
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    concat = require('gulp-concat'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    // sass = require('gulp-sass'),
+    // concat = require('gulp-concat'),
+    // jshint = require('gulp-jshint'),
+    // uglify = require('gulp-uglify'),
+    // rename = require('gulp-rename'),
+    $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('depend', function () {
     return gulp.src(['bower_components/angular/angular.min.js','bower_components/angular-ui-router/release/angular-ui-router.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js'])
-        .pipe(concat('dependencies.js'))
+        .pipe($.concat('dependencies.js'))
         .pipe(gulp.dest('public/js'));
 });
 
 gulp.task('jshint-test', function () {
    return gulp.src(['public/js/app.js','public/js/modules/**/*.js'])
-       .pipe(jshint())
-       .pipe(jshint.reporter('jshint-stylish'));
+       .pipe($.jshint())
+       .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('scripts', function () {
@@ -31,13 +32,13 @@ gulp.task('scripts', function () {
         'public/js/modules/user/afnEditUser.ctrl.js',
         'public/js/modules/user/afnDeleteUser.ctrl.js'
     ])
-        .pipe(concat('app.compiled.js'))
+        .pipe($.concat('app.compiled.js'))
         .pipe(gulp.dest('public/js'));
 });
 
 gulp.task('sass-css', function () {
     return gulp.src('public/scss/main.scss')
-        .pipe(sass())
+        .pipe($.sass())
         .pipe(gulp.dest('public/css'));
 });
 
