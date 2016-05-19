@@ -39,10 +39,8 @@
             $state.go('viewUser', {id: user.id});
         }
 
-        $http({
-            mehtod: 'GET',
-            url: apiUrl
-        }).success(function(data) {
+        $http.get(apiUrl)
+            .success(function(data) {
             $scope.users = data;
             console.log($scope.users);
         });

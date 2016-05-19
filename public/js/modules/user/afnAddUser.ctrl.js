@@ -17,8 +17,7 @@
         $rootScope.user = {};
         $rootScope.createUser = createUser;
         $rootScope.reset = reset;
-
-        // console.log(JSON.stringify($rootScope.user));
+        
         function mapFields(user) {
             return {
                 "first_name": user.first_name,
@@ -32,7 +31,6 @@
         function createUser(user) {
             var userMapped = mapFields(user);
             userJson = JSON.stringify(userMapped);
-            // userJson = userMapped;
             console.log(userJson);
 
             $http.post(apiUrl, userJson)

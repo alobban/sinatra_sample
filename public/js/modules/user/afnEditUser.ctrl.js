@@ -7,9 +7,6 @@
 
     angular
         .module('afn-user')
-        // .config([$httpProvider], function($httpProvider) {
-        //     $httpProvider.defaults.headers.put = 'Content-Type: text/plain';
-        // })
         .controller('AfnEditUserCtrl', AfnEditUserCtrl)
     ;
 
@@ -20,7 +17,6 @@
         $rootScope.updateUser = updateUser;
         $rootScope.cancel = cancelBtn;
         
-        // console.log(JSON.stringify($rootScope.user));
         function mapFields(user) {
             return {
                 "first_name": user.first_name,
@@ -34,7 +30,6 @@
         function updateUser(user) {
             var userMapped = mapFields(user);
             userJson = JSON.stringify(userMapped);
-            // userJson = userMapped;
             console.log(userJson);
             
             $http.put(apiUrl+user.id, userJson)

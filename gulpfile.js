@@ -32,7 +32,7 @@ gulp.task('scripts', function () {
     return gulp.src([
         'public/js/app.js',
         'public/js/modules/user/user.js',
-        'public/js/modules/user/user.controller.js',
+        'public/js/modules/user/user.ctrl.js',
         'public/js/modules/user/afnViewUser.ctrl.js',
         'public/js/modules/user/afnAddUser.ctrl.js',
         'public/js/modules/user/afnEditUser.ctrl.js',
