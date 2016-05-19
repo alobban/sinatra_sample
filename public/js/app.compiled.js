@@ -57,7 +57,7 @@ angular
         .controller('AfnUserController', AfnUserController)
     ;
 
-    function AfnUserController($scope, $http, $state, $rootScope, $window) {
+    function AfnUserController($scope, $http, $state, $rootScope) {
         // var vm = this;
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';
@@ -190,7 +190,7 @@ angular
                     console.log('It works!');
                     console.log(data);
                     $state.go('users');
-                }).error(function(data) {
+                }).error(function(error) {
                     console.log("Error: It's not working!");
                     console.log(error);
                 })
@@ -272,7 +272,6 @@ angular
     function AfnDeleteUserCtrl($http, $rootScope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user/';
-        var userJson = null;
         $rootScope.deleteUser = deleteUser;
         $rootScope.returnToUsers = cancelBtn;
 

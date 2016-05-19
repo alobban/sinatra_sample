@@ -10,7 +10,7 @@
         .controller('AfnUserController', AfnUserController)
     ;
 
-    function AfnUserController($scope, $http, $state, $rootScope, $window) {
+    function AfnUserController($scope, $http, $state, $rootScope) {
         // var vm = this;
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';

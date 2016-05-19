@@ -40,7 +40,7 @@
                     console.log('It works!');
                     console.log(data);
                     $state.go('users');
-                }).error(function(data) {
+                }).error(function(error) {
                     console.log("Error: It's not working!");
                     console.log(error);
                 })

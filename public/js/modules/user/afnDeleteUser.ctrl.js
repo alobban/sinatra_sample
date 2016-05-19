@@ -13,7 +13,6 @@
     function AfnDeleteUserCtrl($http, $rootScope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user/';
-        var userJson = null;
         $rootScope.deleteUser = deleteUser;
         $rootScope.returnToUsers = cancelBtn;
 
