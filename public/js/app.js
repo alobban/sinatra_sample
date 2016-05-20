@@ -4,7 +4,7 @@
 angular
     .module('app', [
         'ui.router',
-        'afn-user'
+        'afnUser'
     ])
     .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');

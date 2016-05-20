@@ -27,11 +27,14 @@ describe('User', function() {
 
     var $httpBackend;
     
-    beforeEach(module('afn-user'));
-    
-    beforeEach(inject(function($injector) {
-        $httpBackend = $injector.get($httpBackend);
-    }));
+    before(function() {
+        
+        module('afnUser');
+        
+        inject(function($injector) {
+            $httpBackend = $injector.get($httpBackend);
+        });
+    });
     
     it('gets a list of users', function() {
         expect(true).to_eq(true);
