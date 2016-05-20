@@ -6,7 +6,7 @@
     'use strict';
 
     angular
-        .module('afn-user')
+        .module('afnUser')
         .controller('AfnViewUserCtrl', AfnViewUserCtrl)
     ;
 
