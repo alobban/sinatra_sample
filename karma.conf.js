@@ -5,7 +5,7 @@ module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: './',
+        basePath: '',
 
 
         // frameworks to use
@@ -18,13 +18,16 @@ module.exports = function (config) {
             'bower_components/angular/angular.min.js',
             'bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'bower_components/angular-mocks/angular-mocks.js',
-            'public/js/modules/**/*.js',
-            'spec/js/**/*.js'
+            'public/js/**/*.js',
+            'test/js/**/*.js'
         ],
 
 
         // list of files to exclude
-        exclude: [],
+        exclude: [
+            'public/js/app.compiled.js',
+            'public/js/dependencies.js'
+        ],
 
 
         // preprocess matching files before serving them to the browser
@@ -68,4 +71,4 @@ module.exports = function (config) {
         // how many browser should be started simultaneous
         concurrency: Infinity
     })
-}
+};
