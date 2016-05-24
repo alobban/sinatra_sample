@@ -4,7 +4,7 @@
 angular
     .module('app', [
         'ui.router',
-        'afn-user'
+        'afnUser'
     ])
     .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
@@ -80,7 +80,7 @@ angular
             $rootScope.user = user;
             $state.go('deleteUser', {id: user.id});
         }
-        
+
         function showUser(user) {
             $rootScope.user = user;
             $state.go('viewUser', {id: user.id});

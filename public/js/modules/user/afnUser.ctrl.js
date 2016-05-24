@@ -33,7 +33,7 @@
             $rootScope.user = user;
             $state.go('deleteUser', {id: user.id});
         }
-        
+
         function showUser(user) {
             $rootScope.user = user;
             $state.go('viewUser', {id: user.id});
