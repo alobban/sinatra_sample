@@ -58,7 +58,6 @@ angular
     ;
 
     function AfnUserController($scope, $http, $state, $rootScope) {
-        // var vm = this;
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';
         $scope.edit = edit;
@@ -67,7 +66,6 @@ angular
         $scope.show = showUser;
 
         function edit(user) {
-            console.log(user);
             $rootScope.user = user;
             $state.go('editUser', {id: user.id});
         }
@@ -89,7 +87,6 @@ angular
         $http.get(apiUrl)
             .success(function(data) {
             $scope.users = data;
-            console.log($scope.users);
         });
     }
 })();
