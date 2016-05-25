@@ -1,10 +1,12 @@
 <div class="form-group">
     <label>First Name:</label>
-    <input type="text" name="first_name" ng-model="user.first_name" class="form-control" required/><br/>
+    <input type="text" name="first_name" ng-model="user.first_name" class="form-control"
+           ng-minlength="2" ng-maxlength="15" required/><br/>
 </div>
 <div class="form-group">
     <label>Last Name:</label>
-    <input type="text" name="last_name" ng-model="user.last_name" class="form-control" required/><br/>
+    <input type="text" name="last_name" ng-model="user.last_name" class="form-control"
+           ng-minlength="5" ng-maxlength="20"required/><br/>
 </div>
 <label>Gender:</label>
 <div class="radio">
@@ -17,9 +19,11 @@
 </div>
 <div class="form-group">
     <label>City: </label>
-    <input type="text" name="city" ng-model="user.city" class="form-control" required/>
+    <input type="text" name="city" ng-model="user.city" class="form-control"
+           ng-minlength="5" ng-maxlength="15" required/>
 </div>
 <div class="form-group">
     <label>State: </label>
-    <input type="text" name="state" ng-model="user.state" class="form-control" required/><br/>
+    <input type="text" name="state" ng-model="user.state" class="form-control"
+           ng-minlength="2" ng-maxlength="14" required/><br/>
 </div>
