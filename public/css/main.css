@@ -15,3 +15,9 @@
 
 table thead tr th:last-child {
   text-align: right; }
+
+input.form-control.ng-pristine.ng-empty.ng-invalid.ng-invalid-required.ng-touched {
+  box-shadow: 0 0 2px rgba(255, 0, 0, 0.9); }
+
+input.form-control.ng-touched.ng-not-empty.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required {
+  box-shadow: 0 0 2px rgba(22, 200, 87, 0.9); }
