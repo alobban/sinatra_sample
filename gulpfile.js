@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 gulp.task('depend', function () {
     log('Combining all dependency frameworks');
     
-    return gulp.src(['bower_components/angular/angular.min.js','bower_components/angular-ui-router/release/angular-ui-router.min.js','bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js'])
+    return gulp.src(['bower_components/jquery/dist/jquery.min.js','bower_components/angular/angular.min.js','bower_components/angular-ui-router/release/angular-ui-router.min.js','bower_components/angular-messages/angular-messages.min.js','bower_components/bootstrap/dist/js/bootstrap.min.js'])
         .pipe($.concat('dependencies.js'))
         .pipe(gulp.dest('public/js'));
 });
