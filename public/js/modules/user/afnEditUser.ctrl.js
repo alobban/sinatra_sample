@@ -25,7 +25,7 @@
                 "city": user.city,
                 "state": user.state
             };
-        }
+        };
 
         function updateUser(user) {
             var userMapped = $scope.mapFields(user);

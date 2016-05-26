@@ -5,5 +5,5 @@
 'use strict';
     
     angular
-        .module('afnUser', []);
+        .module('afnUser', ['ngMessages']);
 })();

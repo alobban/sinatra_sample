@@ -43,7 +43,7 @@ angular
 'use strict';
     
     angular
-        .module('afnUser', []);
+        .module('afnUser', ['ngMessages']);
 })();
 /**
  * Created by vagrant on 5/13/16.
@@ -222,7 +222,7 @@ angular
                 "city": user.city,
                 "state": user.state
             };
-        }
+        };
 
         function updateUser(user) {
             var userMapped = $scope.mapFields(user);
