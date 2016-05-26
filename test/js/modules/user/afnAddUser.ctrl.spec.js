@@ -1,0 +1,70 @@
+/**
+ * Created by vagrant on 5/25/16.
+ */
+
+'use strict';
+
+describe('AfnAddUserCtrl', function () {
+    var userObj = {
+        first_name: "James-Earl",
+        last_name: "Smith",
+        gender: "M",
+        city: "Peoria",
+        state: "IL"
+    };
+
+    var postData = {
+        "first_name": "James-Earl",
+        "last_name": "Smith",
+        "gender": "M",
+        "city": "Peoria",
+        "state": "IL"
+    };
+
+    var $rootScope;
+    var $httpBackend;
+    var $scope;
+    var $state;
+    var AfnAddUserCtrl;
+    var apiUrl = 'http://localhost:9393/user';
+
+    beforeEach(module('afnUser'));
+    beforeEach(module('ui.router'));
+
+    beforeEach(function () {
+        inject(function ($injector) {
+            $httpBackend = $injector.get('$httpBackend');
+            $rootScope = $injector.get('$rootScope');
+            $scope = $rootScope.$new();
+            $state = $injector.get('$state');
+            AfnAddUserCtrl = $injector.get('$controller')('AfnAddUserCtrl', {
+                $scope: $scope
+            });
+        });
+
+        spyOn($scope, 'createUser').and.callThrough();
+    });
+
+    describe('Pre-post', function () {
+        describe('when createUser method is called', function () {
+            it('formats the user object argument to JSON', function () {
+                var mapped = $scope.mapFields(userObj);
+
+                expect(mapped).toEqual(postData);
+            });
+        });
+    });
+
+    xdescribe('Post', function () {
+        describe('when createUser method is called', function () {
+            it('post data to the API server', function () {
+                var postIt = $scope.createUser(userObj);
+                $httpBackend.whenPOST(apiUrl, postData).respond(201, {});
+                
+                $httpBackend.flush();
+                
+                expect(postIt).toBe(201);
+            });
+        });
+    });
+});
