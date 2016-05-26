@@ -109,7 +109,7 @@ angular
         $scope.returnToUsers = returnToUsers;
         $scope.editUser = editUser;
         $scope.deleteUser = deleteUser;
-        $rootScope.returnToUsers = cancelBtn;
+        $scope.returnToUsers = cancelBtn;
 
         console.log($rootScope.user);
         
@@ -207,12 +207,12 @@ angular
         .controller('AfnEditUserCtrl', AfnEditUserCtrl)
     ;
 
-    function AfnEditUserCtrl($http, $rootScope, $state) {
+    function AfnEditUserCtrl($http, $scope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user/';
         var userJson = null;
-        $rootScope.updateUser = updateUser;
-        $rootScope.cancel = cancelBtn;
+        $scope.updateUser = updateUser;
+        $scope.cancel = cancelBtn;
         
         function mapFields(user) {
             return {
@@ -257,17 +257,17 @@ angular
         .controller('AfnDeleteUserCtrl', AfnDeleteUserCtrl)
     ;
 
-    function AfnDeleteUserCtrl($http, $rootScope, $state) {
+    function AfnDeleteUserCtrl($http, $scope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user/';
-        $rootScope.deleteUser = deleteUser;
-        $rootScope.returnToUsers = cancelBtn;
+        $scope.deleteUser = deleteUser;
+        $scope.returnToUsers = cancelBtn;
 
         function deleteUser(user) {
             $http.delete(apiUrl+user.id)
                 .success(function(data) {
                     console.log(data);
-                    $state.go('user');
+                    $state.go('users');
                 })
                 .error(function(data) {
                     console.log(data);

@@ -17,7 +17,7 @@
         $scope.returnToUsers = returnToUsers;
         $scope.editUser = editUser;
         $scope.deleteUser = deleteUser;
-        $rootScope.returnToUsers = cancelBtn;
+        $scope.returnToUsers = cancelBtn;
 
         console.log($rootScope.user);
         

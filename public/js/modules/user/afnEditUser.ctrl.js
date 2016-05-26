@@ -10,12 +10,12 @@
         .controller('AfnEditUserCtrl', AfnEditUserCtrl)
     ;
 
-    function AfnEditUserCtrl($http, $rootScope, $state) {
+    function AfnEditUserCtrl($http, $scope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user/';
         var userJson = null;
-        $rootScope.updateUser = updateUser;
-        $rootScope.cancel = cancelBtn;
+        $scope.updateUser = updateUser;
+        $scope.cancel = cancelBtn;
         
         function mapFields(user) {
             return {
