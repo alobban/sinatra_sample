@@ -4,7 +4,8 @@
 angular
     .module('app', [
         'ui.router',
-        'afnUser'
+        'afnUser',
+        'ngMessages'
     ])
     .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
@@ -43,7 +44,7 @@ angular
 'use strict';
     
     angular
-        .module('afnUser', ['ngMessages']);
+        .module('afnUser', []);
 })();
 /**
  * Created by vagrant on 5/13/16.

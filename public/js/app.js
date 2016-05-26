@@ -4,7 +4,8 @@
 angular
     .module('app', [
         'ui.router',
-        'afnUser'
+        'afnUser',
+        'ngMessages'
     ])
     .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
