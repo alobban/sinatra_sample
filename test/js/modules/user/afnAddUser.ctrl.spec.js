@@ -43,6 +43,7 @@ describe('AfnAddUserCtrl', function () {
         });
 
         spyOn($scope, 'createUser').and.callThrough();
+        spyOn($state, 'go');
     });
 
     describe('Pre-post', function () {
@@ -55,16 +56,27 @@ describe('AfnAddUserCtrl', function () {
         });
     });
 
-    xdescribe('Post', function () {
-        describe('when createUser method is called', function () {
-            it('post data to the API server', function () {
-                var postIt = $scope.createUser(userObj);
-                $httpBackend.whenPOST(apiUrl, postData).respond(201, {});
+    describe('Successful Post', function () {
+        xdescribe('when createUser method is called', function () {
+            it('creates new record against the API server', function () {
+                $httpBackend.expectPOST(apiUrl, postData).respond(201, {});
                 
+                $scope.createUser(userObj);
                 $httpBackend.flush();
                 
-                expect(postIt).toBe(201);
+                expect().toBe(201);
             });
         });
+        
+        describe('after request has completed', function () {
+            it('routes to user index page', function () {
+                $httpBackend.whenPOST(apiUrl, postData).respond(201, {});
+
+                $scope.createUser(userObj);
+                $httpBackend.flush();
+                
+                expect($state.go).toHaveBeenCalledWith('users');
+            })
+        })
     });
 });
