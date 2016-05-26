@@ -213,8 +213,8 @@ angular
         var userJson = null;
         $scope.updateUser = updateUser;
         $scope.cancel = cancelBtn;
-        
-        function mapFields(user) {
+
+        $scope.mapFields = function(user) {
             return {
                 "first_name": user.first_name,
                 "last_name": user.last_name,
@@ -225,7 +225,7 @@ angular
         }
 
         function updateUser(user) {
-            var userMapped = mapFields(user);
+            var userMapped = $scope.mapFields(user);
             userJson = JSON.stringify(userMapped);
             console.log(userJson);
             
