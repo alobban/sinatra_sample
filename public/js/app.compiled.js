@@ -155,15 +155,15 @@ angular
         .controller('AfnAddUserCtrl', AfnAddUserCtrl)
     ;
 
-    function AfnAddUserCtrl($rootScope, $http, $state) {
+    function AfnAddUserCtrl($http, $state, $scope) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain+'/user';
         var userJson = null;
-        $rootScope.user = {};
-        $rootScope.createUser = createUser;
-        $rootScope.reset = reset;
-        
-        function mapFields(user) {
+        $scope.user = {};
+        $scope.createUser = createUser;
+        $scope.reset = reset;
+
+        $scope.mapFields = function(user) {
             return {
                 "first_name": user.first_name,
                 "last_name": user.last_name,
@@ -171,10 +171,10 @@ angular
                 "city": user.city,
                 "state": user.state
             };
-        }
+        };
         
         function createUser(user) {
-            var userMapped = mapFields(user);
+            var userMapped = $scope.mapFields(user);
             userJson = JSON.stringify(userMapped);
             console.log(userJson);
 
@@ -191,7 +191,7 @@ angular
         }
         
         function reset() {
-            $rootScope.user = {};
+            $scope.user = {};
         }
     }
 })();
