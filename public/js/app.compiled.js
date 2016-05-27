@@ -262,12 +262,11 @@ angular
         function deleteUser(user) {
             $http.delete(apiUrl+user.id)
                 .success(function(data) {
-                    console.log(data);
+                    $scope.status = "Deleting...";
                     $state.go('users');
                 })
                 .error(function(data) {
-                    console.log(data);
-                    console.log('Error: Delete did not work!');
+                    $scope.status = "Failed...";
                 })
             ;
         }
