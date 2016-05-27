@@ -31,16 +31,13 @@
         function createUser(user) {
             var userMapped = $scope.mapFields(user);
             userJson = JSON.stringify(userMapped);
-            console.log(userJson);
-
+            
             $http.post(apiUrl, userJson)
                 .success(function(data) {
-                    console.log('It works!');
-                    console.log(data);
+                    $scope.status = "Saving...";
                     $state.go('users');
-                }).error(function(error) {
-                    console.log("Error: It's not working!");
-                    console.log(error);
+                }).error(function() {
+                    $scope.status = "Failed...";
                 })
             ;
         }
