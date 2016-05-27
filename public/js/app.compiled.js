@@ -225,7 +225,6 @@ angular
         function updateUser(user) {
             var userMapped = $scope.mapFields(user);
             userJson = JSON.stringify(userMapped);
-            // console.log(userJson);
             
             $http.put(apiUrl+user.id, userJson)
                 .success(function(response) {
@@ -233,7 +232,6 @@ angular
                     $state.go('users');
                 }).error(function(error) {
                     $scope.status = 'Failed...';
-                    // console.log(error);
                 })
             ;
         }
