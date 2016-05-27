@@ -13,13 +13,13 @@
     function AfnViewUserCtrl($rootScope, $http, $scope, $state) {
         var domain = 'http://localhost:9393';
         var apiUrl = domain + '/user/';
-        $scope.user = $rootScope.user;
+        // $scope.user = $rootScope.user;
         $scope.returnToUsers = returnToUsers;
         $scope.editUser = editUser;
         $scope.deleteUser = deleteUser;
-        $scope.returnToUsers = cancelBtn;
+        // $scope.returnToUsers = cancelBtn;
 
-        console.log($rootScope.user);
+        // console.log($rootScope.user.id);
         
         function returnToUsers() {
             $state.go('users');
@@ -34,20 +34,20 @@
             $rootScope.user = user;
             $state.go('deleteUser', {id: user.id});
         }
+        //
+        // function cancelBtn() {
+        //     $state.go('users');
+        // }
 
-        function cancelBtn() {
-            $state.go('users');
-        }
-
-        $http.get(apiUrl+$rootScope.user.id)
-            .success(function(data) {
-                console.log(data);
-                console.log('View User works!');
-            })
-            .error(function(data) {
-                console.log(data);
-                console.log('View User does not Work!');
-            })
-        ;
+        // $http.get(apiUrl+$scope.user.id)
+        //     .success(function(data) {
+        //         console.log(data);
+        //         console.log('View User works!');
+        //     })
+        //     .error(function(data) {
+        //         console.log(data);
+        //         console.log('View User does not Work!');
+        //     })
+        // ;
     }
 })();
