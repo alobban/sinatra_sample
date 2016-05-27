@@ -30,15 +30,15 @@
         function updateUser(user) {
             var userMapped = $scope.mapFields(user);
             userJson = JSON.stringify(userMapped);
-            console.log(userJson);
+            // console.log(userJson);
             
             $http.put(apiUrl+user.id, userJson)
                 .success(function(response) {
-                    console.log(response);
+                    $scope.status = 'Updating...';
                     $state.go('users');
                 }).error(function(error) {
-                    console.log("Error: It's not working");
-                    console.log(error);
+                    $scope.status = 'Failed...';
+                    // console.log(error);
                 })
             ;
         }
